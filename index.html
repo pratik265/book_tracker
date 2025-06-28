@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Reading Tracker</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Book Reading Tracker</h1>
+        
+        <!-- Google Identity Services Sign-In Section -->
+         <!--data-client_id="1017720485305-1m8qv4vrumaful3ncibvf9j2i9enc1l9.apps.googleusercontent.com"  netlify account-->
+         <!--data-client_id="1017720485305-82919ut9v40ci7t4siskhgijer1t930h.apps.googleusercontent.com"  localhost account-->
+        <div id="g_id_onload"
+             data-client_id="1017720485305-82919ut9v40ci7t4siskhgijer1t930h.apps.googleusercontent.com" data-callback="handleCredentialResponse">
+        </div>
+        <div class="g_id_signin" data-type="standard"></div>
+        <div id="sync-status" class="sync-status"></div>
+        
+        <div class="form-container">
+            <h2>Add a New Book</h2>
+            <form id="add-book-form">
+                <input type="text" id="book-name" placeholder="Book Name" required>
+                <input type="text" id="author-name" placeholder="Author Name" required>
+                <input type="number" id="total-pages" placeholder="Total Pages" required>
+                <label for="start-date">Start Date:</label>
+                <input type="date" id="start-date" required>
+                <input type="file" id="book-pdf" accept="application/pdf">
+                <button type="submit">Add Book</button>
+            </form>
+        </div>
+        <div class="book-list-container">
+            <h2>My Books</h2>
+            <ul id="book-list">
+                <!-- Book items will be injected here by JavaScript -->
+            </ul>
+        </div>
+    </div>
+    <!-- Google API loader with callback -->
+    <script src="script.js"></script>
+    <script>
+      function startGoogleAPI() {
+        handleClientLoad();
+      }
+    </script>
+    <script src="https://apis.google.com/js/api.js?onload=startGoogleAPI"></script>
+</body>
+</html> 
